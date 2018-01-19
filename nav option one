@@ -1,0 +1,24 @@
+<div class="dropdown-content">
+	<?php include "includes/errors.inc.php"; ?>
+	<?php
+		if (isset($_SESSION['u_id'])){
+			echo '<form action="includes/logout.inc.php" method="POST">
+				<div class="dropdown-signout">
+					<p>Hello ' . $_SESSION['u_uid'] .
+					'<a href="myAccount.php" class="button">My Account</a>
+					<button type="submit" name="submit">Logout</button>
+				</div>
+			</form>';
+		} else {
+			echo '<form role="form" method="POST" action="index.php" accept-charset="UTF-8" id="login-nav">
+			<div class="dropdown-signIn">
+				<h4>Log In</h4>
+				<input type="text" name="uid" placeholder="Username/email">
+				<input type="password" name="pwd_1" placeholder="Password">
+				<button type="submit" name="submit">Sign in</button>
+				<a href="signup.php" class="button">Sign Up!</a>
+			</div>
+			</form>';
+		}
+	?>
+</div>
