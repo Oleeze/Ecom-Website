@@ -21,19 +21,37 @@
 	<nav class="navbar navbar-toggleable-md">
         <div class="nav-icon-border">
 			<div class="nav-icon-wrapper">
-            <div id="nav-icon">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
+				<div id="nav-icon">
+				  <span></span>
+				  <span></span>
+				  <span></span>
+				</div>
+			</div>
+		<div class="tinyCenter">
+            <a href="index.php">
+				<img src="images/Logo.png">
+			</a>	
+        </div>    
+			<div class="tinyCart">
+				<li>
+					<a href="cart.php">
+						<i class="fa fa-shopping-cart fa-3x" aria-hidden="true">
+						</i>
+					</a>	
+				</li>
 			</div>	
         </div>
 		<div class="navbar-wrapper">
+		<ul class="navbar-nav" id="navbar-nav-left">
+				<a href="index.php"><span>Oleg's Outfits</span></a>
+		</ul>
 			
-        <ul class="navbar-nav" id="navbar-nav-left">
+			
+		
+        <ul class="navbar-nav" id="navbar-nav-center">
             <li>
 				<a href="women-category.php">
-					Women's
+				<span>Women's</span>
 				</a>
 				<div class="nav-span-arrowtab">
 					<i class="fa fa-arrow-up nav-span-arrow" aria-hidden="true"></i>
@@ -49,7 +67,7 @@
 			</li>
             <li>
 				<a href="#">
-					Men's
+					<span>Men's</span>
 				</a>
 			<div class="nav-span-arrowtab"><i class="fa fa-arrow-up nav-span-arrow" aria-hidden="true"></i><i class="fa fa-arrow-down nav-span-arrow" aria-hidden="true"></i></div>
 					<ul class="navbar-navlv2">
@@ -62,7 +80,7 @@
 			</li>
             <li>
 				<a href="#">
-					Apartment
+					<span>Apartment</span>
 				</a>
 			<div class="nav-span-arrowtab"><i class="fa fa-arrow-up nav-span-arrow" aria-hidden="true"></i><i class="fa fa-arrow-down nav-span-arrow" aria-hidden="true"></i></div>
 					<ul class="navbar-navlv2">
@@ -75,7 +93,7 @@
 			</li>
             <li>
 				<a href="#">
-					Accessories
+					<span>Accessories</span>
 				</a><div class="nav-span-arrowtab"><i class="fa fa-arrow-up nav-span-arrow" aria-hidden="true"></i><i class="fa fa-arrow-down nav-span-arrow" aria-hidden="true"></i>
 				</div>
 					<ul class="navbar-navlv2">
@@ -88,25 +106,23 @@
 			</li>
             <li>
 				<a href="#">
-					Sale
+					<span>Sale</span>
 				</a><div class="nav-span-arrowtab"><i class="fa fa-arrow-up nav-span-arrow" aria-hidden="true"></i><i class="fa fa-arrow-down nav-span-arrow" aria-hidden="true"></i></div></li>
         </ul>
         <ul class="navbar-nav" id="navbar-nav-right">
-            <li>
+            <!--<li>
 				<a href="#">
 					Search<i class="fa fa-search" aria-hidden="true"></i>
 				</a>
-			</li>
+			</li> -->
 			<li class="dropdown">
-				<div class="dropbtn">
 <?php
-if(!isset($_SESSION['u_uid'])) {
-echo '<a href="login.php">Hello, Sign In<br>My Account</a>';
-} else {
-echo "<a href=myAccount.php>Hello, ". $_SESSION['u_uid'] . "<br>My Account</a>";
-};
-?>
-				</div>
+	if(!isset($_SESSION['u_uid'])) {
+	echo '<a href="login.php"><span>Sign In</span></a>';
+	} else {
+	echo "<a href=myAccount.php>My Account</a>";
+	};
+?> 	
 			</li>
 			<li>
 				<a href="cart.php">
