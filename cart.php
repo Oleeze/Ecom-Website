@@ -3,8 +3,19 @@ require 'header.php';
 require 'includes/cart.inc.php';
 
 ?>
-<?php echo isset($error) ? $error: '';?>
-<div class="shoppingCart">
+<?php if(isset($error)) {
+	echo $error;
+}  ?>
+
+<?php
+	if(!isset($_SESSION['cart'])){
+?>	
+	<div class="empty">
+		<h1> Your Cart Is empty go fill it up :)</h1>
+	</div>
+<?php	
+	} else {
+	echo '<div class="shoppingCart">
 <form method="post" class="cartWrapper">
 		<div class="nestedWrapper">
 			<div>Product</div>
@@ -12,8 +23,7 @@ require 'includes/cart.inc.php';
 			<div>Price</div>
 			<div>QTY</div>
 			<div>Amount</div>	
-		</div>
-<?php
+		</div>';
 	$cart = json_decode(json_encode($_SESSION['cart']));
 	$_SESSION['$s'] = 0;
 	$_SESSION['$q'] = 0;
@@ -35,22 +45,23 @@ require 'includes/cart.inc.php';
 			<div><a href="cart.php?index=<?php echo $index; ?>">X</a></div>
 		</div>
 <?php 
-	}
-?>
-	<div class="nWrapper">
+	} 
+
+echo	'<div class="nWrapper">
 		<div><button type="text" name="update" >Update</button></div>
-		<div><?php echo 'Total:' ;
-			?></div>
-		<div > $<?php echo $_SESSION['$s']
-			?>.00</div>
+		<div>Total: ;</div>
+		<div > $' .$_SESSION['$s']. '.00</div>
 	</div>
 </form>		
 </div>
 <div class="shopingCartLinks">
-	<a onclick="goBack()">Continue Shopping</a>
-	<a href="checkout.php">Check Out</a>
-</div>
-<?php
+	<a onclick="goBack()">Continue Shopping</a>';
+		if(!isset($_SESSION['cart'])){
+				echo 'You have nothing to check out!';
+}	else {
+	echo '<a href="checkout.php">Check Out</a></div>';
+}
+}
 	require 'footer.php';
 ?>
 <script>

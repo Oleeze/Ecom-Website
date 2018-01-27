@@ -4,7 +4,9 @@ require 'includes/dbh.inc.php';
 require 'includes/item.inc.php';
 //Save new order
 
-
+if(!isset($_SESSION['u_id'])){
+	$_SESSION['u_id'] = "Guest";
+}
 $newOrder = $conn->prepare("INSERT INTO orders (UserID, Amount) Values ('{$_SESSION['u_id']}','{$_SESSION['$s']}')");
 $newOrder->execute();
 $ordersid = $newOrder->insert_id;	
@@ -16,7 +18,6 @@ for($i = 0; $i<count($cart); $i++){
 	$new_Orderdetail = $conn->prepare("INSERT INTO `orderdetails` (`OrderID`,`ProductID`,`Price`,`Quantity`) VALUES(".$ordersid.",".$cart[$i]->id.",".$cart[$i]->price.",".$cart[$i]->quantity.")");
 	$new_Orderdetail->execute();
 	$new_Orderdetailid = $new_Orderdetail->insert_id;
-	echo "$new_Orderdetailid </br>";
 	$update = $conn->prepare("UPDATE products SET Quantity=Quantity - ".$cart[$i]->quantity." WHERE ID=".$cart[$i]->id);
 	$update->execute();
 }

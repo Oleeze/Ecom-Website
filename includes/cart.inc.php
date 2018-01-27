@@ -22,7 +22,6 @@ if(isset($_GET['id']) && !isset($_POST['update'])){
 		if($cart[$i]->id==$_GET['id'])
 		{
 			$index = $i;
-			
 			break;
 		}
 	if($index==-1){
@@ -42,6 +41,9 @@ if(isset($_GET['index']) && !isset($_POST['update'])){
 
 // Update quantity in cart
 if(isset($_POST['update'])){
+	if (empty($_SESSION['cart'])) {
+      echo "No Items to Update";
+	}	else {
 	$arrQuantity = $_POST['quantity'];
 	
 	// Check validate quantity
@@ -60,5 +62,5 @@ if(isset($_POST['update'])){
 	}
 	else
 		$error = 'Quantity is InValid';
-}
+} }
 ?>
